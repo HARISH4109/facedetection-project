@@ -5,8 +5,12 @@ import { Button } from "@/components/ui/button"
 import { signIn, signOut } from "next-auth/react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
+export const dynamic = "force-dynamic"
+
 export default function AuthTestPage() {
-  const { data: session, status } = useSession()
+  const sessionContext = useSession()
+  const session = sessionContext?.data
+  const status = sessionContext?.status ?? "unauthenticated"
 
   return (
     <div className="container py-8 flex flex-col items-center">

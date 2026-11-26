@@ -1,6 +1,6 @@
 import type { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-import { compare, hash } from "bcrypt"
+import { compare, hash } from "bcryptjs"
 
 // In a real app, this would be a database
 // For demo purposes, we'll use an in-memory store
