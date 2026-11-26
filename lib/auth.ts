@@ -89,6 +89,7 @@ export const authOptions: NextAuthOptions = {
       return session
     },
   },
+  secret: process.env.NEXTAUTH_SECRET || "facedetection-app-secret-key-32charslong!!",
   debug: process.env.NODE_ENV === "development",
 }
 
