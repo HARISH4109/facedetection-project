@@ -248,14 +248,16 @@ export default function DetectPage() {
           const text = [`${Math.round(age)} years`, `${gender} (${Math.round(genderProbability * 100)}%)`]
           const anchor = box.bottomLeft
           const drawOptions = {
-            anchorPosition: "BOTTOM_LEFT",
+            anchorPosition: "BOTTOM_LEFT" as any,
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             fontColor: "white",
             fontSize: 16,
             padding: 5,
           }
           const drawBox = new faceapi.draw.DrawTextField(text, anchor, drawOptions)
-          drawBox.draw(canvasRef.current)
+          if (canvasRef.current) {
+            drawBox.draw(canvasRef.current)
+          }
         })
 
         // Save detection results
@@ -409,14 +411,16 @@ export default function DetectPage() {
           const text = [`${topExpression}`, ageGenderText]
           const anchor = box.bottomLeft
           const drawOptions = {
-            anchorPosition: "BOTTOM_LEFT",
+            anchorPosition: "BOTTOM_LEFT" as any,
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             fontColor: "white",
             fontSize: 14,
             padding: 5,
           }
           const drawBox = new faceapi.draw.DrawTextField(text, anchor, drawOptions)
-          drawBox.draw(videoCanvasRef.current)
+          if (videoCanvasRef.current) {
+            drawBox.draw(videoCanvasRef.current)
+          }
         })
 
         // Continue detection loop if stream is active
@@ -634,14 +638,16 @@ export default function DetectPage() {
           const text = [`${topExpression}`, ageGenderText]
           const anchor = box.bottomLeft
           const drawOptions = {
-            anchorPosition: "BOTTOM_LEFT",
+            anchorPosition: "BOTTOM_LEFT" as any,
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             fontColor: "white",
             fontSize: 14,
             padding: 5,
           }
           const drawBox = new faceapi.draw.DrawTextField(text, anchor, drawOptions)
-          drawBox.draw(canvasElement)
+          if (canvasElement) {
+            drawBox.draw(canvasElement)
+          }
         })
       } catch (error) {
         console.error("Error processing video frame:", error)

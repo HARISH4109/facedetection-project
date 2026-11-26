@@ -86,7 +86,7 @@ export function SiteHeader() {
             {user ? (
               <div className="flex items-center gap-4">
                 <div className="text-sm text-muted-foreground">
-                  <span className="font-medium text-foreground">{user.name || user.email}</span>
+                  <span className="font-medium text-foreground">{user.displayName || user.email}</span>
                 </div>
                 <Button variant="ghost" size="sm" onClick={() => logout()}>
                   Sign out

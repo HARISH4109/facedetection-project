@@ -62,14 +62,14 @@ const loadFromLocalStorage = () => {
         const parsedUsers = JSON.parse(storedUsers)
         users.length = 0 // Clear array
         users.push(...parsedUsers)
-        nextUserId = Math.max(...users.map((u) => u.id)) + 1
+        nextUserId = Math.max(...users.map((u: any) => u.id)) + 1
       }
 
       if (storedHistory) {
         const parsedHistory = JSON.parse(storedHistory)
         detectionHistory.length = 0 // Clear array
         detectionHistory.push(...parsedHistory)
-        nextHistoryId = parsedHistory.length > 0 ? Math.max(...parsedHistory.map((h) => h.id)) + 1 : 1
+        nextHistoryId = parsedHistory.length > 0 ? Math.max(...parsedHistory.map((h: any) => h.id)) + 1 : 1
       }
     } catch (error) {
       console.error("Error loading from localStorage:", error)
