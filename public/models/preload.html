@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Face-API.js Model Preloader</title>
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <script>
+    // This file helps preload and cache the face-api.js models
+    async function preloadModels() {
+      const MODEL_URL = 'https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights';
+      
+      try {
+        console.log('Preloading SsdMobilenetv1 model...');
+        await faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL);
+        
+        console.log('Preloading FaceLandmark68 model...');
+        await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
+        
+        console.log('Preloading FaceRecognition model...');
+        await faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL);
+        
+        console.log('Preloading FaceExpression model...');
+        await faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL);
+        
+        console.log('All models preloaded successfully!');
+      } catch (error) {
+        console.error('Error preloading models:', error);
+      }
+    }
+
+    // Start preloading when the page loads
+    window.addEventListener('DOMContentLoaded', preloadModels);
+  </script>
+</head>
+<body>
+  <h1>Face-API.js Model Preloader</h1>
+  <p>This page is preloading the face-api.js models. Check the console for progress.</p>
+</body>
+</html>
+
